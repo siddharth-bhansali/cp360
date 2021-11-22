@@ -1,3 +1,5 @@
+<h1>Dynamic Form</h1>
+
 Steps to setup:
 1. `.env` is already included, just need to create a database with name `cp360` in the server. Or modify `.end` according to needs.
 2. Run following commands in the artisan: `composer install`, `php artisan migrate`, `php artisan db:seed`, `php artisan serve`

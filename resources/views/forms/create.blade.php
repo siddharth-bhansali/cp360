@@ -5,15 +5,16 @@
 
 @section('content')
     <div class="col-md-8 col-lg-6 mx-auto card shadow border-0 p-4">
-        <h1 class="text-center">Fill Form</h1>
-        <form method="post" action="{{ route('forms.store') }}">
-            @csrf
-            @foreach($fields as $field)
-                @switch($field->type)
-                    @case('text')
-                    @case('number')
-                    @case('email')
-                    @case('password')
+        @if(count($fields))
+            <h1 class="text-center">Fill Form</h1>
+            <form method="post" action="{{ route('forms.store') }}">
+                @csrf
+                @foreach($fields as $field)
+                    @switch($field->type)
+                        @case('text')
+                        @case('number')
+                        @case('email')
+                        @case('password')
                         <div class="form-group mb-3">
                             <label for="{{ $field->name }}" class="form-label">{{ $field->label }}</label>
                             <input type="{{ $field->type }}" class="form-control" id="{{ $field->name }}" name="{{ $field->name }}" placeholder="{{ $field->label }}" required>
@@ -23,7 +24,7 @@
                         </div>
                         @break
 
-                    @case('select')
+                        @case('select')
                         <div class="form-group mb-3">
                             <label for="{{ $field->name }}" class="form-label">{{ $field->label }}</label>
                             <select class="form-select" id="{{ $field->name }}" name="{{ $field->name }}" required>
@@ -37,7 +38,7 @@
                         </div>
                         @break
 
-                    @case('checkbox')
+                        @case('checkbox')
                         <div class="form-group mb-3">
                             <label for="{{ $field->name }}" class="form-label me-3">{{ $field->label }}</label>
                             @foreach($field->options as $option)
@@ -51,11 +52,14 @@
                             @enderror
                         </div>
                         @break
-                @endswitch
-            @endforeach
-            <div class="d-grid">
-                <button type="submit" class="btn btn-outline-primary">Submit</button>
-            </div>
-        </form>
+                    @endswitch
+                @endforeach
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-outline-primary">Submit</button>
+                </div>
+            </form>
+        @else
+            <h1 class="text-center">No Form Available.</h1>
+        @endif
     </div>
 @endsection

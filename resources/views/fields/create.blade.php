@@ -1,7 +1,7 @@
 @extends('index')
 
 @section('document-title', 'Create')
-@section('header-form', 'active')
+@section('header-fields', 'active')
 
 @section('content')
     <div class="col-md-8 col-lg-6 offset-md-2 offset-lg-3 card shadow border-0 p-4">
